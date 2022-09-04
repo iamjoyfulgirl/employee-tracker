@@ -10,11 +10,11 @@
   "respository": {
     "type": "git",
     "url": "git+https://github.com/iamjoyfulgirl/employee-tracker.git"
-  }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": "https://github.com/iamjoyfulgirl/employee-tracker/issues"
+  "bugs": "https://github.com/iamjoyfulgirl/employee-tracker/issues",
   "dependencies": {
     "console.table": "^0.10.0",
     "express": "^4.17.1",
