@@ -101,5 +101,98 @@ const promptUser = () => {
 // ~~~~~~~~~~~~~
 // Add departments
 function addDepartment() {
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is the name of the new department?',
+      default: () => { },
+      validate: name => {
+        let valid = /^[a-zA-Z0-9 ]{1,30}$/.test(name);
+        if (valid) {
+          return true;
+        } else {
+          console.log(`. Your name must be between 1 and 30 characters.`)
+          return false;
+        }
+      }
+    }
+  ]).then((answers) => {
+    insertDepartment(answers.name);
+  });
+}
 
+function insertDepartment(newDepartment) {
+  connection.query('INSERT INTO departments SET?', new Department(newDepartment), (err, res) => {
+    if (err) throw err;
+    console.log(`Successfully added ${newDeparment} to Departments`);
+    init();
+  });
+}
+
+// Add roles
+// Title, Salary, Department 
+function addRole() {
+  const array = []; getDepartmentsAsync(departmentId)
+    .then(data => {
+      for (let i = 0; i < data.length; i++) {
+        array.push(data[i]);
+      }
+    })
+
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'title',
+      message: 'What is the title of the new role?',
+      default: () => { },
+      validate: title => {
+        let valid = /^[a-zA-Z0-9 ]{1,30}$/.test(title);
+        if (valid) {
+          return true;
+        } else {
+          console.log(`. Your title must be between 1 and 30 characters.`)
+          return false;
+        }
+      }
+    },
+    {
+      type: 'input',
+      name: 'salary',
+      message: 'What is the salary of the new role?',
+      default: () => { },
+      validate: salary => {
+        let valid = /^\d+(\.\d{0,2})?$/.test(salary);
+        if (valid) {
+          return true;
+        } else {
+          console.log(`. Please enter a valid number.`)
+          return false;
+        }
+      }
+    },
+    {
+      type: 'list',
+      name: 'department',
+      message: 'In which department is the new role?',
+      choices: array
+    }
+  ]).then(answers => {
+    let departmentId;
+    for (let i = 0; i < array.length; i++) {
+      if (answers.department === array[i].name) {
+        deparmentId = array[i].id;
+      }
+    }
+    insertRole(answers.title, answers.salary, departmentId);
+  })
+
+}
+
+function insertRole(title, salary, department_id) {
+  connection.query('INSERT INTO roles SET ?', new Role(title, salary, department_id), (err, res) => {
+    if (err) throw err;
+    console.log(`Successfully added ${title} to Roles`);
+    init();
+  });
 }
