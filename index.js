@@ -48,7 +48,7 @@ const promptUser = () => {
     {
       type: 'list',
       name: 'choices',
-      message: "What would you like to do?",
+      message: 'What would you like to do?',
       choices: ['View Departments', 'View Roles', 'View Employees', 'View Department Budget', 'Update Employee', 'Add Department', 'Add Role', 'Add Employee', 'Delete Department', 'Delete Role', 'Delete Employee', 'Exit Employee Tracker']
     }
 
@@ -105,7 +105,7 @@ function addDepartment() {
     {
       type: 'input',
       name: 'name',
-      message: 'What is the name of the new department?',
+      message: `What is the name of the new department?`,
       default: () => { },
       validate: name => {
         let valid = /^[a-zA-Z0-9 ]{1,30}$/.test(name);
@@ -144,7 +144,7 @@ function addRole() {
     {
       type: 'input',
       name: 'title',
-      message: 'What is the title of the new role?',
+      message: `What is the title of the new role?`,
       default: () => { },
       validate: title => {
         let valid = /^[a-zA-Z0-9 ]{1,30}$/.test(title);
@@ -159,7 +159,7 @@ function addRole() {
     {
       type: 'input',
       name: 'salary',
-      message: 'What is the salary of the new role?',
+      message: `What is the salary of the new role?`,
       default: () => { },
       validate: salary => {
         let valid = /^\d+(\.\d{0,2})?$/.test(salary);
@@ -195,4 +195,107 @@ function insertRole(title, salary, department_id) {
     console.log(`Successfully added ${title} to Roles`);
     init();
   });
+}
+
+// ADD EMPLOYEES
+// Get array of objects that includes roles, titles and ids, emplyee last names and ids
+
+function addEmployee() {
+  const rolesData = [];
+  const rolesNames = [];
+  const employeesData = [];
+  const employeesNames = ['No Manager'];
+
+  getRolesAsync()
+    .then(data => {
+      for (let i = 0; i < data.length; i++) {
+        rolesData.push(data[i]);
+        rolesNames.push(data[i].role)
+      }
+
+      getEmployeesAsync()
+        .then(data => {
+          for (let i = 0; i < data.length; i++) {
+            employeesData.push(data[i]);
+            employeesNames.push(data[i].last_name)
+          }
+        }).catch(err => {
+          console.log(err);
+        })
+    }).catch(err => {
+      console.log(err);
+    });
+
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'firstName',
+      message: `What is the employee's first name?`,
+      default: () => { },
+      validate: firstName => {
+        let valid = /^[a-zA-Z0-9 ]{1,30}$/.test
+          (firstName);
+        if (valid) {
+          return true;
+        } else {
+          console.log(`. First name must be between 1 and 30 characters.`)
+          return false;
+        }
+      }
+    },
+    {
+      type: 'input',
+      name: 'lastName',
+      message: `What is the employee's last name?`,
+      default: () => { },
+      validate: lastName => {
+        let valid = /^[a-zA-Z0-9 ]{1,30}$/.test(lastName);
+        if (valid) {
+          return true;
+        } else {
+          console.log(`. Last name must be between 1 and 30 characters.`)
+          return false;
+        }
+      }
+
+    },
+    {
+      type: 'list',
+      name: 'role',
+      message: `What is the employee's role?`,
+      choices: roleNames
+    },
+    {
+      type: 'list',
+      name: 'manager',
+      message: `who is the employee's manager?`,
+      choices: employeesNames
+    }
+  ]).then(answers => {
+    let roleId;
+    let managerId;
+
+    for (let i = 0; i < rolesData.length; i++) {
+      if (answers.role === rolesData[i].role) {
+        roleId = rolesData[i].id;
+      }
+    }
+
+    for (let i = 0; i < employeesData.length; i++) {
+      if (answers.manager === employeesData[i].last_name) {
+        managerId = employeesData[i].id;
+      } else if (answers.manager === 'No Manager') {
+        managerId = null;
+      }
+    }
+    insertEmployee(answers.firstName, answers.lastName, roleId, managerId);
+  });
+}
+
+function insertEmployee(firstName, lastName, roleId, managerId) {
+  connection.query('INSERT INTO employees SET ?', new Employee
+    (firstName, lastName, roleId, managerId), (err, res) => {
+      console.log(`Successfully added ${firstName} ${lastName} to Employees`);
+      init();
+    });
 }
