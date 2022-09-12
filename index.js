@@ -760,5 +760,40 @@ function calculateDepartmentBudget(data, name) {
   init();
 }
 
+// ASYNC Functions
+
+function getRolesAsync() {
+  return new Promise((resolve, reject) => {
+    connection.query(`SELECT id, title AS 'role' FROM roles ORDER BY role`, (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(data);
+    });
+  });
+}
+
+function getEmployeesAsync() {
+  return new Promise((resolve, reject) => {
+    connection.query(`SELECT id, last_name FROM employees ORDER BY last_name`, (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(data);
+    });
+  });
+}
+
+function getDepartmentsAsync() {
+  return new Promise((resolve, reject) => {
+    connection.query(`SELECT * FROM departments`, (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(data);
+    })
+  })
+}
+
 
 
