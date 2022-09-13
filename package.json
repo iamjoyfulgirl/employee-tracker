@@ -1,26 +1,19 @@
 {
   "name": "employee-tracker",
   "version": "1.0.0",
-  "description": "A command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL",
+  "description": "\"CLI for employee database\"",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
-    
   },
-  "respository": {
-    "type": "git",
-    "url": "git+https://github.com/iamjoyfulgirl/employee-tracker.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": "https://github.com/iamjoyfulgirl/employee-tracker/issues",
   "dependencies": {
+    "comma-number": "^2.0.1",
     "console.table": "^0.10.0",
     "dotenv": "^16.0.2",
-    "express": "^4.17.1",
-    "inquirer": "^9.1.1",
-    "mysql2": "^2.3.3"
+    "inquirer": "^8.2.4",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "ui-terminal": "^1.1.4"
   }
 }
