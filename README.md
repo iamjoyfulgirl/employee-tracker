@@ -20,7 +20,7 @@ This app uses inquirer.js, mysql2, console.table, and comma-number. Run `npm ins
 
 ## Usage
 
-First, download the schema.sql file to create the database and three tables that contain the info for departments, roles, and employees. A seeds.sql file is included as an example.
+First, download the schema.sql file to create the database and three tables that contain the info for departments, roles, and employees. A seeds.sql file is included as an example. You can seed the database by following the prompts and/or by running `mysql -u root -p` and `source seeds.sql` to see the seeded data.
 
 ## User Story
 
