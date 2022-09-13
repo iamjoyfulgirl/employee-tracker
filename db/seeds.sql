@@ -7,9 +7,9 @@ VALUES('Sales'),
 
 INSERT INTO roles(title, salary, department_id)
 VALUES('Sales Lead', 90894.47, 1),
-('Associate Sales', 45486.00, 1),
+('Associate Sales', 45486.99, 1),
 ('Senior Project Manager', 120372.65, 2),
-('Associate Product Manger', 50900.5, 2),
+('Associate Product Manger', 50900.59, 2),
 ('HR Manager', 93000.54, 3),
 ('Executive Assistant', 49583.55, 3);
 
