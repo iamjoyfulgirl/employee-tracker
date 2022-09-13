@@ -1,10 +1,26 @@
-# 12 SQL: Employee Tracker
+# Employee Tracker
 
-## Your Task
+![badge](https://img.shields.io/badge/license-MIT-brightgreen)
 
-Developers frequently have to create interfaces that allow non-developers to easily view and interact with information stored in databases. These interfaces are called **content management systems (CMS)**. Your assignment this week is to build a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
+## Description
 
-Because this application won’t be deployed, you’ll also need to create a walkthrough video that demonstrates its functionality and all of the following acceptance criteria being met. You’ll need to submit a link to the video and add it to the README of your project.
+A command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tests](#tests)
+- [License](#license)
+- [Questions](#questions)
+
+## Installation
+
+This app uses inquirer.js, mysql2, console.table, and comma-number. Run `npm install` in the root directory to download these dependencies. Since it interacts with a SQL database, a SQL interface is also required. The user will need to enter their MySQL username and password in `index.js` to connect to their local database to run this application.
+
+## Usage
+
+First, download the schema.sql file to create the database and three tables that contain the info for departments, roles, and employees. A seeds.sql file is included as an example.
 
 ## User Story
 
@@ -33,152 +49,70 @@ THEN I am prompted to enter the name, salary, and department for the role and th
 WHEN I choose to add an employee
 THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 WHEN I choose to update an employee role
-THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
+THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 ```
 
-## Mock-Up
+## Tests
+
+N/A
+
+## License
+
+![badge](https://img.shields.io/badge/license-MIT-brightgreen)
+<br />  
+Content in this project is covered by the MIT license.
+
+## Questions?
+
+Questions about this project can be directed to:
+
+- Email: sherri.a.knight@gmail.com
+- You can view more of my projects at https://github.com/iamjoyfulgirl.
+
+---
+
+Employee Tracker - Copyright 2022 Sherri Knight
+
+## Mock-Up TODO
 
 The following video shows an example of the application being used from the command line:
 
-[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/12-sql-homework-video-thumbnail.png)](https://2u-20.wistia.com/medias/2lnle7xnpk)
-
-## Getting Started
-
-This Challenge will require a video submission. Refer to the [Fullstack Blog Video Submission Guide](https://coding-boot-camp.github.io/full-stack/computer-literacy/video-submission-guide) for additional guidance on creating a video.
-
-You’ll need to use the [MySQL2 package](https://www.npmjs.com/package/mysql2) to connect to your MySQL database and perform queries, the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4) to interact with the user via the command line, and the [console.table package](https://www.npmjs.com/package/console.table) to print MySQL rows to the console.
-
-**Important**: You will be committing a file that contains your database credentials. Make sure that your MySQL password is not used for any other personal accounts, because it will be visible on GitHub. In upcoming lessons, you will learn how to better secure this password, or you can start researching npm packages now that could help you.
-
-You might also want to make your queries asynchronous. MySQL2 exposes a `.promise()` function on Connections to upgrade an existing non-Promise connection to use Promises. To learn more and make your queries asynchronous, refer to the [npm documentation on MySQL2](https://www.npmjs.com/package/mysql2).
-
-Design the database schema as shown in the following image:
-
-![Database schema includes tables labeled “employee,” role,” and “department.”](./Assets/12-sql-homework-demo-01.png)
-
-As the image illustrates, your schema should contain the following three tables:
-
-* `department`
-
-    * `id`: `INT PRIMARY KEY`
-
-    * `name`: `VARCHAR(30)` to hold department name
-
-* `role`
-
-    * `id`: `INT PRIMARY KEY`
-
-    * `title`: `VARCHAR(30)` to hold role title
-
-    * `salary`: `DECIMAL` to hold role salary
-
-    * `department_id`: `INT` to hold reference to department role belongs to
-
-* `employee`
-
-    * `id`: `INT PRIMARY KEY`
-
-    * `first_name`: `VARCHAR(30)` to hold employee first name
-
-    * `last_name`: `VARCHAR(30)` to hold employee last name
-
-    * `role_id`: `INT` to hold reference to employee role
-
-    * `manager_id`: `INT` to hold reference to another employee that is the manager of the current employee (`null` if the employee has no manager)
-
-You might want to use a separate file that contains functions for performing specific SQL queries you'll need to use. A constructor function or class could be helpful for organizing these. You might also want to include a `seeds.sql` file to pre-populate your database, making the development of individual features much easier.
+[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/)]()
 
 ## Bonus
 
 Try to add some additional functionality to your application, such as the ability to do the following:
 
-* Update employee managers.
+- Update employee managers.
 
-* View employees by manager.
+- View employees by manager.
 
-* View employees by department.
+- View employees by department.
 
-* Delete departments, roles, and employees.
+- Delete departments, roles, and employees.
 
-* View the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department.
+- View the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department.
 
-## Grading Requirements
-
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-
-This Challenge is graded based on the following criteria:
-
-### Deliverables: 10%
-
-* Your GitHub repository containing your application code.
-
-### Walkthrough Video: 27%
-
-* A walkthrough video that demonstrates the functionality of the employee tracker must be submitted, and a link to the video should be included in your README file.
-
-* The walkthrough video must show all of the technical acceptance criteria being met.
-
-* The walkthrough video must demonstrate how a user would invoke the application from the command line.
-
-* The walkthrough video must demonstrate a functional menu with the options outlined in the acceptance criteria.
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-    * Uses the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4).
-
-    * Uses the [MySQL2 package](https://www.npmjs.com/package/mysql2) to connect to a MySQL database.
-
-    * Uses the [console.table package](https://www.npmjs.com/package/console.table) to print MySQL rows to the console.
-
-* Follows the table schema outlined in the Challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality README with description and a link to a walkthrough video.
-
-### Application Quality 10%
-
-* The application user experience is intuitive and easy to navigate.
+### Walkthrough Video
 
 ### Bonus
 
 Fulfilling any of the following can add up to 20 points to your grade. Note that the highest grade you can achieve is still 100:
 
-* Application allows users to update employee managers (2 points).
+- Application allows users to update employee managers (2 points).
 
-* Application allows users to view employees by manager (2 points).
+- Application allows users to view employees by manager (2 points).
 
-* Application allows users to view employees by department (2 points).
+- Application allows users to view employees by department (2 points).
 
-* Application allows users to delete departments, roles, and employees (2 points for each).
+- Application allows users to delete departments, roles, and employees (2 points for each).
 
-* Application allows users to view the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department (8 points).
+- Application allows users to view the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department (8 points).
 
 ## Review
 
 You are required to submit BOTH of the following for review:
 
-* A walkthrough video demonstrating the functionality of the application.
+- A walkthrough video demonstrating the functionality of the application.
 
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
-- - -
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+- The URL of the GitHub repository, with a unique name and a README describing the project.
