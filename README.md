@@ -3,17 +3,22 @@
 ## Table of Contents
 
 - [Description](#description)
+- [Video Walkthrough](#video-walkthrough)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Acceptance Criteria](#acceptance-criteria)
 - [Tests](#tests)
 - [License](#license)
 - [Questions](#questions)
-- [Video Walkthrough](#video-walkthrough)
 
 ## Description
 
 A command-line application that allows a user to perform create, read, update, and delete (CRUD) functions on a SQL database representing the departments, roles and employees of a company.
+
+## Video Walkthrough
+
+The following video shows an example of the application being used from the command line:
+[Screencastify](https://drive.google.com/file/d/1cBksWMX-IOk58SeHmgdeX0jo427uiHvQ/view)
 
 ## Installation
 
@@ -24,15 +29,15 @@ This app uses inquirer.js, mysql2, console.table, and comma-number. Run `npm ins
 First, download the schema.sql file to create the database and three tables that contain the info for departments, roles, and employees. A seeds.sql file is included as an example. You can seed the database by following the prompts and/or by running `mysql -u root -p` and `source seeds.sql` to see the seeded data.
 ![Schema](/Assets/schema.png)
 
-### To start the app, run the command `node index` in the terminal. The user sees the app banner and provided a list of choices to execute various CRUD functions.
+To start the app, run the command `node index` in the terminal. The user sees the app banner and provided a list of choices to execute various CRUD functions.
 
 ![Start](/Assets/app-start.png)
 
-### The first three options are GET requests for viewing the data for the three databases. If `View Employees` is selected, the user can sort the employees in three different ways: Alphabetically by last name, by manager, and by department.
+The first three options are GET requests for viewing the data for the three databases. If `View Employees` is selected, the user can sort the employees in three different ways: Alphabetically by last name, by manager, and by department.
 
 ![Employee Options](/Assets/employee-options.png)
 
-## The remaining options include logic to meet the following acceptance criteria and bonus functionality.
+The remaining options include logic to meet the following acceptance criteria and bonus functionality.
 
 ## User Story
 
@@ -77,11 +82,6 @@ Ability to delete departments, roles, and employees
 
 Ability to view the total utilized budget of a department—in other words, the combined salaries of all employees in that department
 ```
-
-## Video Walkthrough
-
-The following video shows an example of the application being used from the command line:
-[Screencastify](https://drive.google.com/file/d/1cBksWMX-IOk58SeHmgdeX0jo427uiHvQ/view)
 
 ## Tests
 
