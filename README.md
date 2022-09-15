@@ -52,6 +52,12 @@ WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 ```
 
+## Mock-Up TODO
+
+The following video shows an example of the application being used from the command line:
+
+[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/)]()
+
 ## Tests
 
 N/A
@@ -72,12 +78,6 @@ Questions about this project can be directed to:
 ---
 
 Employee Tracker - Copyright 2022 Sherri Knight
-
-## Mock-Up TODO
-
-The following video shows an example of the application being used from the command line:
-
-[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/)]()
 
 ## Bonus
 
