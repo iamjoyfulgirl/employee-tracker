@@ -349,7 +349,7 @@ function viewEmployees() {
 }
 
 function sortByLastName() {
-    connection.query(`SELECT e.last_name AS 'Last Name', e.first_name AS 'First Name', e.id AS 'ID', r.title AS 'Role', d.name AS 'Department'
+    connection.query(`SELECT e.last_name AS 'Last Name', e.first_name AS 'First Name', e.id AS 'ID', r.title AS 'Role', r.salary AS 'Salary', d.name AS 'Department'
                   FROM employees e
                   JOIN roles r
                   ON e.role_id = r.id
@@ -379,7 +379,7 @@ function sortByManager() {
 }
 
 function sortByDepartment() {
-    connection.query(`SELECT d.name AS 'Department', e.last_name AS 'Last Name', e.first_name AS 'First Name', e.id AS 'ID', r.title AS 'Role'
+    connection.query(`SELECT d.name AS 'Department', e.last_name AS 'Last Name', e.first_name AS 'First Name', e.id AS 'ID', r.title AS 'Role', r.salary AS 'Salary'
                       FROM employees e
                       JOIN roles r
                       ON e.role_id = r.id
