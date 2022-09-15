@@ -1,18 +1,19 @@
 # Employee Tracker
 
-![badge](https://img.shields.io/badge/license-MIT-brightgreen)
-
-## Description
-
-A command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL.
-
 ## Table of Contents
 
+- [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Acceptance Criteria](#acceptance-criteria)
 - [Tests](#tests)
 - [License](#license)
 - [Questions](#questions)
+- [Video Walkthrough](#video-walkthrough)
+
+## Description
+
+A command-line application that allows a user to perform create, read, update, and delete (CRUD) functions on a SQL database representing the departments, roles and employees of a company.
 
 ## Installation
 
@@ -21,6 +22,17 @@ This app uses inquirer.js, mysql2, console.table, and comma-number. Run `npm ins
 ## Usage
 
 First, download the schema.sql file to create the database and three tables that contain the info for departments, roles, and employees. A seeds.sql file is included as an example. You can seed the database by following the prompts and/or by running `mysql -u root -p` and `source seeds.sql` to see the seeded data.
+![Schema](/Assets/schema.png)
+
+### To start the app, run the command `node index` in the terminal. The user sees the app banner and provided a list of choices to execute various CRUD functions.
+
+![Start](/Assets/app-start.png)
+
+### The first three options are GET requests for viewing the data for the three databases. If `View Employees` is selected, the user can sort the employees in three different ways: Alphabetically by last name, by manager, and by department.
+
+![Employee Options](/Assets/employee-options.png)
+
+## The remaining options include logic to meet the following acceptance criteria and bonus functionality.
 
 ## User Story
 
@@ -52,20 +64,33 @@ WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 ```
 
-## Mock-Up TODO
+## Bonus Functionality Includes:
+
+```
+Ability to update employee managers
+
+Ability to view employees by manager
+
+Ability to view employees by department
+
+Ability to delete departments, roles, and employees
+
+Ability to view the total utilized budget of a department—in other words, the combined salaries of all employees in that department
+```
+
+## Video Walkthrough
 
 The following video shows an example of the application being used from the command line:
-
-[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/)]()
+[Screencastify](https://drive.google.com/file/d/1cBksWMX-IOk58SeHmgdeX0jo427uiHvQ/view)
 
 ## Tests
 
-N/A
+This repository does not include any unit tests.
 
 ## License
 
 ![badge](https://img.shields.io/badge/license-MIT-brightgreen)
-<br />  
+
 Content in this project is covered by the MIT license.
 
 ## Questions?
@@ -78,41 +103,3 @@ Questions about this project can be directed to:
 ---
 
 Employee Tracker - Copyright 2022 Sherri Knight
-
-## Bonus
-
-Try to add some additional functionality to your application, such as the ability to do the following:
-
-- Update employee managers.
-
-- View employees by manager.
-
-- View employees by department.
-
-- Delete departments, roles, and employees.
-
-- View the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department.
-
-### Walkthrough Video
-
-### Bonus
-
-Fulfilling any of the following can add up to 20 points to your grade. Note that the highest grade you can achieve is still 100:
-
-- Application allows users to update employee managers (2 points).
-
-- Application allows users to view employees by manager (2 points).
-
-- Application allows users to view employees by department (2 points).
-
-- Application allows users to delete departments, roles, and employees (2 points for each).
-
-- Application allows users to view the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department (8 points).
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-- A walkthrough video demonstrating the functionality of the application.
-
-- The URL of the GitHub repository, with a unique name and a README describing the project.
